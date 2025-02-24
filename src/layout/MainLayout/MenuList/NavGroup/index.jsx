@@ -12,8 +12,7 @@ import Typography from '@mui/material/Typography';
 // project imports
 import NavCollapse from '../NavCollapse';
 import NavItem from '../NavItem';
-
-import { useGetMenuMaster } from 'api/menu';
+import { useGetMenuMaster } from '../../../../api/menu';
 
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 

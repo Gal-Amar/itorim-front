@@ -10,9 +10,8 @@ import Typography from '@mui/material/Typography';
 import AuthWrapper1 from './AuthWrapper1';
 import AuthCardWrapper from './AuthCardWrapper';
 import AuthRegister from '../auth-forms/AuthRegister';
-
-import Logo from 'ui-component/Logo';
-import AuthFooter from 'ui-component/cards/AuthFooter';
+import AuthFooter from '../../../ui-component/cards/AuthFooter';
+import Logo from '../../../ui-component/Logo';
 
 export default function Register() {
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));

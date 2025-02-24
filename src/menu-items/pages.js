@@ -1,36 +1,36 @@
 // assets
-import { IconKey } from '@tabler/icons-react';
+import { IconBriefcase2 } from '@tabler/icons-react';
 
 // constant
 const icons = {
-  IconKey
+  IconBriefcase2
 };
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
 
 const pages = {
   id: 'pages',
-  title: 'Pages',
-  caption: 'Pages Caption',
-  icon: icons.IconKey,
+  title: 'לקוחות וחשבוניות',
+  // caption: 'Pages Caption',
+  icon: icons.IconBriefcase2,
   type: 'group',
   children: [
     {
-      id: 'authentication',
-      title: 'Authentication',
+      id: 'cases',
+      title: 'תיקי לקוחות',
       type: 'collapse',
-      icon: icons.IconKey,
+      icon: icons.IconBriefcase2,
       children: [
         {
           id: 'login',
-          title: 'login',
+          title: 'התחברות',
           type: 'item',
           url: '/pages/login',
           target: true
         },
         {
           id: 'register',
-          title: 'register',
+          title: 'הרשמה',
           type: 'item',
           url: '/pages/register',
           target: true

@@ -2,7 +2,7 @@
 import { createTheme } from '@mui/material/styles';
 
 // assets
-import defaultColor from 'assets/scss/_themes-vars.module.scss';
+import defaultColor from './../assets/scss/_themes-vars.module.scss';
 
 // ==============================|| DEFAULT THEME - PALETTE ||============================== //
 

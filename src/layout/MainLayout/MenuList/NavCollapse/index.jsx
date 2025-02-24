@@ -18,12 +18,10 @@ import Box from '@mui/material/Box';
 
 // project imports
 import NavItem from '../NavItem';
-import Transitions from 'ui-component/extended/Transitions';
 
-import useConfig from 'hooks/useConfig';
-import { useGetMenuMaster } from 'api/menu';
-
-// third party
+import useConfig from '../../../../hooks/useConfig';
+import { useGetMenuMaster } from '../../../../api/menu';
+import Transitions from '../../../../ui-component/extended/Transitions';
 
 // assets
 import { IconChevronDown, IconChevronRight, IconChevronUp } from '@tabler/icons-react';
@@ -223,7 +221,8 @@ export default function NavCollapse({ menu, level, parentId }) {
                   sx={{
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    width: 120
+                    width: 120,
+                    textAlign: 'right'
                   }}
                 >
                   {menu.title}

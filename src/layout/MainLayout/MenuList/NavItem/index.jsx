@@ -15,8 +15,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 // project imports
-import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
-import useConfig from 'hooks/useConfig';
+import useConfig from '../../../../hooks/useConfig';
+import { useGetMenuMaster } from '../../../../api/menu';
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
@@ -79,6 +79,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
         sx={{
           zIndex: 1201,
           borderRadius: `${borderRadius}px`,
+          textAlign: 'right',
           mb: 0.5,
           ...(drawerOpen && level !== 1 && { ml: `${level * 18}px` }),
           ...(!drawerOpen && { pl: 1.25 }),

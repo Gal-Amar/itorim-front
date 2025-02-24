@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 
 // assets
 import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons-react';
-import User1 from 'assets/images/users/user-round.svg';
+import User1 from './../../../../assets/images/users/user-round.svg';
 
 function ListItemWrapper({ children }) {
   const theme = useTheme();

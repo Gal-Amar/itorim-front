@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 // project imports
-import useConfig from 'hooks/useConfig';
+import useConfig from '../../hooks/useConfig';
 
 // constant
 const headerStyle = {

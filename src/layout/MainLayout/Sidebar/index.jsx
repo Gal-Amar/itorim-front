@@ -14,11 +14,9 @@ import MenuCard from './MenuCard';
 import MenuList from '../MenuList';
 import LogoSection from '../LogoSection';
 import MiniDrawerStyled from './MiniDrawerStyled';
-
-import useConfig from 'hooks/useConfig';
-import { drawerWidth } from 'store/constant';
-
-import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
+import { handlerDrawerOpen, useGetMenuMaster } from '../../../api/menu';
+import useConfig from '../../../hooks/useConfig';
+import { drawerWidth } from '../../../store/constant';
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
@@ -49,8 +47,7 @@ function Sidebar() {
       </>
     );
 
-
-    let drawerSX = {paddingLeft: '0px', paddingRight: '0px', marginTop: '20px' };
+    let drawerSX = { paddingLeft: '0px', paddingRight: '0px', marginTop: '20px' };
 
     if (drawerOpen) {
       drawerSX = {

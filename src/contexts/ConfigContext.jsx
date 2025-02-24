@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { createContext } from 'react';
 
 // project imports
-import defaultConfig from 'config';
-import useLocalStorage from 'hooks/useLocalStorage';
+import { defaultConfig } from 'swr/_internal';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 // initial state
 const initialState = {

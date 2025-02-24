@@ -3,9 +3,9 @@ import Grid from '@mui/material/Grid2';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import useConfig from '../../hooks/useConfig';
 
 // project imports
-import useConfig from 'hooks/useConfig';
 
 // concat 'px'
 function valueText(value) {
