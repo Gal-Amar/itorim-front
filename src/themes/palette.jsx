@@ -31,6 +31,8 @@ export default function Palette(mode, presetColor) {
         light: colors.secondaryLight,
         main: colors.secondaryMain,
         dark: colors.secondaryDark,
+        darker: colors.secondaryDarker,
+        lighter: colors.secondaryLighter,
         200: colors.secondary200,
         800: colors.secondary800
       },

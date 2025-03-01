@@ -3,6 +3,9 @@ import { lazy } from 'react';
 // project imports
 import Loadable from '../ui-component/Loadable';
 import MainLayout from '../layout/MainLayout';
+import AuthLogin from '../views/pages/auth-forms/AuthLogin';
+
+import FilesPage from '../views/pages/files-pages';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('./../views/dashboard/Default')));
@@ -35,8 +38,17 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'typography',
-      element: <UtilsTypography />
+      path: 'files',
+      children: [
+        {
+          path: 'search-files',
+          element: <FilesPage />
+        }
+      ]
+    },
+    {
+      path: 'auth',
+      element: <AuthLogin />
     },
     {
       path: 'color',
