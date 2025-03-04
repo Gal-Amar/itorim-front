@@ -54,7 +54,8 @@ export default function FileTicket() {
   const [tab, setTab] = useState( 0 );
   const theme = useTheme();
 
-  const handleChange = ( tab ) => {
+  const handleChange = ( event, tab ) => {
+    console.log(tab);
     setTab( tab );
   }
 
@@ -73,9 +74,9 @@ export default function FileTicket() {
       <CustomTabPanel tab={tab} index={1}>
 
       </CustomTabPanel>
-      {/*<CustomTabPanel tab={tab} index={2}>*/}
-      {/*  Item Three*/}
-      {/*</CustomTabPanel>*/}
+      <CustomTabPanel tab={tab} index={2}>
+        Item Three
+      </CustomTabPanel>
     </Box>
   );
 }

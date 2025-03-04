@@ -18,8 +18,6 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 //project imports
 import  FileTicket  from './file-ticket-form/FileTicket';
-// import FileTicketTabs from './file-ticket-form/FileTicketTabs';
-import Box from '@mui/material/Box';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   whiteSpace: 'nowrap',
@@ -27,7 +25,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   textOverflow: 'ellipsis',
   maxWidth: 'fit-content',
   border: '1px solid ' + theme.palette.divider,
-
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.secondary['main'],
     color: theme.palette.common.white
@@ -92,7 +89,6 @@ const tableHeaders = [
 
 export default function FilesTable() {
   const [selected, setSelected] = useState([]);
-  const theme = useTheme();
 
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
@@ -118,7 +114,7 @@ export default function FilesTable() {
         <TableHead>
           <TableRow>
             {tableHeaders.map((header, index) => (
-              <StyledTableCell key={index} align={'center'}>
+              <StyledTableCell  key={index} align={'center'}>
                 {header}
               </StyledTableCell>
             ))}
@@ -133,7 +129,7 @@ export default function FilesTable() {
               <Fragment key={row.id}>
                 <StyledTableRow hover={false} onClick={(event) => handleClick(event, row.id)}
                                  key={row.id} selected={isItemSelected}>
-                  <TableCell onClick={() => setOpen(!open)}>
+                  <TableCell size={"small"} onClick={() => setOpen(!open)}>
                     <IconButton
                       aria-label="expand row"
                       size="small"
@@ -145,19 +141,19 @@ export default function FilesTable() {
                   <StyledTableCell onClick={() => setOpen(!open)} scope="row">
                     {row.name}
                   </StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.fat}</StyledTableCell>
-                  <StyledTableCell  onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.protein}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.fat}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.protein}</StyledTableCell>
-                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.calories}</StyledTableCell>
-                  <StyledTableCell  align={'center'}>{row.fat}</StyledTableCell>
-                  <StyledTableCell align={'center'}>{row.carbs}</StyledTableCell>
-                  <StyledTableCell align={'center'}>{row.protein}</StyledTableCell>
-                  <StyledTableCell align={'center'} >{row.protein}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'}>{row.fat}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'}>{row.protein}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'} >{row.fat}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'} >{row.protein}</StyledTableCell>
+                  <StyledTableCell size={"small"} onClick={() => setOpen(!open)} align={'center'}>{row.calories}</StyledTableCell>
+                  <StyledTableCell size={"small"}  align={'center'}>{row.fat}</StyledTableCell>
+                  <StyledTableCell size={"small"} align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell size={"small"} align={'center'}>{row.protein}</StyledTableCell>
+                  <StyledTableCell size={"small"} align={'center'} >{row.protein}</StyledTableCell>
 
                 </StyledTableRow>
                 <TableRow >

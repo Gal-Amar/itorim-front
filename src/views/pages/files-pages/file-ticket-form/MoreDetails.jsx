@@ -54,7 +54,7 @@ export const MoreDetails = () => {
   return (
     <FormikProvider value={formik}>
         <form onSubmit={formik.handleSubmit}>
-          <Box sx={{ margin: '10px', display: 'flex', alignItems: 'center', gap: '6px', flexDirection: 'row'  }}>
+          <Box>
             <StyledStack spacing={1.5}>
               <StyledTitle >פרטים נוספים</StyledTitle>
               <TextField

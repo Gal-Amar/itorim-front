@@ -3,15 +3,13 @@ import { styled } from '@mui/material/styles';
 
 import { DebtorDetails } from './DebtorDetails';
 import { MoreDetails } from './MoreDetails';
+import Box from '@mui/material/Box';
 
 
 
 const StyledGrid = styled(Grid) (({ theme }) => ({
-  // border: `2px solid ${theme.palette.secondary['light']}`,
-  // padding: theme.spacing(2),
   borderRadius: '20px',
-  // backgroundColor: theme.palette.secondary['light'],
-  width: '100%',
+  width: 'fit-content',
   alignItems: 'center',
   justifyContent: 'center',
 }))
@@ -22,17 +20,18 @@ const StyledGrid = styled(Grid) (({ theme }) => ({
 
 export const FileDetails = () => {
     return (
-        <StyledGrid container spacing={0}>
-          <Grid xs={4} >
+      <Box sx={{ flexGrow: 1 }}>
+      <StyledGrid container spacing={2}>
+          <Grid size={{ xs:12, sm: 6, md: 4 }}>
             <DebtorDetails />
           </Grid>
-          <Grid  xs={4} >
+          <Grid size={{ xs:12, sm: 6, md: 4 }}>
             <MoreDetails />
           </Grid>
-
-          <Grid  xs={4}>
-
+          <Grid size={{ xs:12, sm: 6, md: 4 }}>
+            <MoreDetails />
           </Grid>
         </StyledGrid>
+      </Box>
     )
 };
