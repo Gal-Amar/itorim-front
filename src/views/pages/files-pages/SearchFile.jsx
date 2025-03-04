@@ -21,7 +21,6 @@ const searchByOptions = ['שם החייב', 'תז החייב', 'מספר תיק 
 
 export default function SearchFilesCard() {
   const [selectedOption, setSelectedOption] = useState('שם החייב'); // Default selected option
-
   const getValidationSchema = () => {
     if (selectedOption === searchByOptions[0]) {
       return Yup.object({

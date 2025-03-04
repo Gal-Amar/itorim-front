@@ -5,6 +5,8 @@ import { useMemo } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import StyledEngineProvider from '@mui/material/StyledEngineProvider';
+import rtlPlugin from 'stylis-plugin-rtl';
+import { prefixer } from 'stylis';
 
 // project imports
 import useConfig from '../hooks/useConfig';
@@ -13,6 +15,13 @@ import Typography from './typography';
 
 import componentStyleOverrides from './compStyleOverride';
 import customShadows from './shadows';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+
+const rtlCache = createCache({
+  key: 'muirtl',
+  stylisPlugins: [rtlPlugin],
+});
 
 export default function ThemeCustomization({ children }) {
   const { borderRadius, fontFamily, mode, outlinedFilled, presetColor } = useConfig();
@@ -29,7 +38,7 @@ export default function ThemeCustomization({ children }) {
       mixins: {
         toolbar: {
           minHeight: '48px',
-          padding: '16px',
+          padding: '8px',
           '@media (min-width: 600px)': {
             minHeight: '48px'
           }
@@ -46,10 +55,12 @@ export default function ThemeCustomization({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes}>
-        <CssBaseline enableColorScheme />
-        {children}
-      </ThemeProvider>
+      <CacheProvider value={rtlCache}>
+        <ThemeProvider theme={themes}>
+          <CssBaseline enableColorScheme />
+          {children}
+        </ThemeProvider>
+      </CacheProvider>
     </StyledEngineProvider>
   );
 }

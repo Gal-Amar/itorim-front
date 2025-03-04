@@ -1,5 +1,7 @@
-import {useState} from 'react';
-import { styled } from '@mui/material/styles';
+import { useState, Fragment } from 'react';
+
+// material-ui
+import { styled, useTheme } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -8,13 +10,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow ,{ tableRowClasses }from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+
+//assets
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-
-import { TablePagination } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import { FileTicket } from './FileTicket';
+//project imports
+import  FileTicket  from './file-ticket-form/FileTicket';
+// import FileTicketTabs from './file-ticket-form/FileTicketTabs';
+import Box from '@mui/material/Box';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   whiteSpace: 'nowrap',
@@ -22,6 +27,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   textOverflow: 'ellipsis',
   maxWidth: 'fit-content',
   border: '1px solid ' + theme.palette.divider,
+
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.secondary['main'],
     color: theme.palette.common.white
@@ -32,13 +38,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme , selected}) => ({
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
   cursor: 'pointer',
   '&:nth-of-type(even)': {
-    backgroundColor:   theme.palette.secondary['lighter'],
+    backgroundColor:   theme.palette.secondary['light'],
   },
   '&:nth-of-type(odd)': {
-    backgroundColor:  theme.palette.secondary['lighter'],
+    backgroundColor:  theme.palette.secondary['light'],
   },
   [`&.${tableRowClasses.selected}`]:{
     backgroundColor: theme.palette.secondary['800'],
@@ -86,6 +92,7 @@ const tableHeaders = [
 
 export default function FilesTable() {
   const [selected, setSelected] = useState([]);
+  const theme = useTheme();
 
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
@@ -123,43 +130,44 @@ export default function FilesTable() {
             const [open, setOpen] = useState(false);
 
             return(
-              <>
-            <StyledTableRow hover={false} onClick={(event) => handleClick(event, row.id)}
-                             key={row.id} selected={isItemSelected}
-            >
-              <TableCell>
-                <IconButton
-                  aria-label="expand row"
-                  size="small"
-                  onClick={() => setOpen(!open)}
-                >
-                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                </IconButton>
-              </TableCell>
-              <StyledTableCell scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.fat}</StyledTableCell>
-              <StyledTableCell  onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.protein}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.fat}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.protein}</StyledTableCell>
-              <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.calories}</StyledTableCell>
-              <StyledTableCell  align={'center'}>{row.fat}</StyledTableCell>
-              <StyledTableCell align={'center'}>{row.carbs}</StyledTableCell>
-              <StyledTableCell align={'center'}>{row.protein}</StyledTableCell>
-              <StyledTableCell align={'center'} >{row.protein}</StyledTableCell>
+              <Fragment key={row.id}>
+                <StyledTableRow hover={false} onClick={(event) => handleClick(event, row.id)}
+                                 key={row.id} selected={isItemSelected}>
+                  <TableCell onClick={() => setOpen(!open)}>
+                    <IconButton
+                      aria-label="expand row"
+                      size="small"
+                      onClick={() => setOpen(!open)}
+                    >
+                      {open ? <KeyboardArrowUpIcon  sx={{ color: 'white' }}/> : <KeyboardArrowDownIcon  />}
+                    </IconButton>
+                  </TableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} scope="row">
+                    {row.name}
+                  </StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.fat}</StyledTableCell>
+                  <StyledTableCell  onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.protein}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.calories}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.fat}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'} >{row.protein}</StyledTableCell>
+                  <StyledTableCell onClick={() => setOpen(!open)} align={'center'}>{row.calories}</StyledTableCell>
+                  <StyledTableCell  align={'center'}>{row.fat}</StyledTableCell>
+                  <StyledTableCell align={'center'}>{row.carbs}</StyledTableCell>
+                  <StyledTableCell align={'center'}>{row.protein}</StyledTableCell>
+                  <StyledTableCell align={'center'} >{row.protein}</StyledTableCell>
 
-            </StyledTableRow>
-            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <FileTicket />
-            </Collapse>
-              </TableCell>
-          </>
+                </StyledTableRow>
+                <TableRow >
+                  <TableCell sx={{ padding: 0, paddingTop: 0 }} colSpan={15}>
+                      <Collapse in={open} timeout="auto" unmountOnExit >
+                        <FileTicket />
+                      </Collapse>
+                   </TableCell>
+                </TableRow>
+          </Fragment>
             ) })}
 
         </TableBody>
