@@ -18,42 +18,9 @@ const StyledTitle = styled('h4') (({ theme }) => ({
 }))
 
 
-export const MoreDetails = () => {
-  const getValidationSchema = () => {
-    return Yup.object({
-      lawyerName: Yup.string()
-        .required('הכנס שם תיק עו"ד')
-      // .test('not a number', 'צריך ערך מספרי')
-      ,
-      clientName: Yup.string().required('הכנס שם הלקוח'),
-      courierName: Yup.string(),
-      locatorName: Yup.string(),
-      caseType: Yup.string(),
-      status: Yup.string(),
-      address: Yup.string(),
-      moreInfo: Yup.string(),
-    })
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      lawyerName: '',
-      clientName: '',
-      courierName: '',
-      locatorName:'',
-      caseType: '',
-      status:'',
-      address:'',
-      moreInfo:'',
-    },
-    validationSchema: getValidationSchema(),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
+export const MoreDetails = ({formik}) => {
   return (
-    <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit}>
+
           <Box>
             <StyledStack spacing={1.5}>
               <StyledTitle >פרטים נוספים</StyledTitle>
@@ -133,7 +100,6 @@ export const MoreDetails = () => {
 
             </StyledStack>
           </Box>
-        </form>
-    </FormikProvider>
+
   );
 };

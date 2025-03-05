@@ -27,6 +27,27 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
   }
 }));
 
+const StyledFileBox = styled(Box)(({ theme }) => ({
+  width: 'fit-content',
+  margin: '12px',
+  padding: '12px',
+  maxWidth: '80vw',
+  backgroundColor: theme.palette.secondary.light,
+  borderRadius: '20px',
+  // [theme.breakpoints.down('sm')]: {
+  //   // width: '20%',
+  //   maxWidth: '100vw',
+  //   padding: '8px',
+  //   borderRadius: '10px',
+  // },
+  // [theme.breakpoints.down('md')]: {
+  //   // width: '40%',
+  //   maxWidth: '85vw',
+  //   padding: '8px',
+  //   borderRadius: '10px',
+  // },
+}));
+
 
 function CustomTabPanel(props) {
   const { children, tab, index } = props;
@@ -37,7 +58,7 @@ function CustomTabPanel(props) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
     >
-      {tab === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {tab === index && <Box sx={{ }}>{children}</Box>}
     </div>
   );
 }
@@ -55,13 +76,12 @@ export default function FileTicket() {
   const theme = useTheme();
 
   const handleChange = ( event, tab ) => {
-    console.log(tab);
     setTab( tab );
   }
 
   return (
-    <Box sx={{ width: 'fit-content', margin: '12px', padding:'12px', backgroundColor: theme.palette.secondary.light, borderRadius: '20px' }}>
-      <Box >
+    <StyledFileBox>
+      <Box sx={{ paddingBottom: '20px'  }}>
         <StyledTabs value={tab}  onChange={handleChange} sx={{ borderBottom: 2, borderColor: theme.palette.grey[300] }}>
           <StyledTab label="פרטי התיק"  value={0}/>
           <StyledTab label="פעולות בתיק"  value={1}/>
@@ -77,6 +97,6 @@ export default function FileTicket() {
       <CustomTabPanel tab={tab} index={2}>
         Item Three
       </CustomTabPanel>
-    </Box>
+    </StyledFileBox>
   );
 }

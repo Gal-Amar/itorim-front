@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
 import { DateField } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 const StyledStack = styled(Stack)(({ theme }) => ({
   border: `1px solid ${theme.palette.grey[400]}`,
@@ -19,44 +20,9 @@ const StyledTitle = styled('h4') (({ theme }) => ({
 }))
 
 
-export const DebtorDetails = (Props) => {
-  const getValidationSchema = () => {
-    return Yup.object({
-      lawyerFileNumber: Yup.number()
-        .required('הכנס מספר תיק עו"ד')
-      // .test('not a number', 'צריך ערך מספרי')
-      ,
-      debtorName: Yup.string().required('הכנס שם החייב'),
-      debtorId: Yup.number().required('חייב להיות מספר')
-        .min(100000000, 'המספר חייב להיות באורך של 9 ספרות')
-        .max(999999999, 'המספר חייב להיות באורך של 9 ספרות'),
-      debtorAddress: Yup.mixed(),
-      homeNumber: Yup.number(),
-      apartmentNumber: Yup.mixed(),
-      openFileDate: Yup.date().required('אנה הכנס תאריך פתיחת התיק'),
-      transferDate: Yup.date(),
-    })
-  };
+export const DebtorDetails = ({ formik }) => {
 
-  const formik = useFormik({
-    initialValues: {
-      lawyerFileNumber: '',
-      debtorName: '',
-      debtorId: '',
-      debtorAddress:'',
-      homeNumber: '',
-      apartmentNumber:'',
-      openFileDate:'',
-      transferDate:'',
-    },
-    validationSchema: getValidationSchema(),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
   return (
-    <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit}>
           <Box >
             <StyledStack spacing={1.5}>
               <StyledTitle >פרטי החייב</StyledTitle>
@@ -129,22 +95,22 @@ export const DebtorDetails = (Props) => {
               <DateField
                 name="openFileDate"
                 label="תאריך פתיחת תיק"
-                onChange={(e)=>{formik.handleChange(e)}}
+                onChange={(val)=>{formik.setFieldValue('openFileDate', val)}}
                 size="small"
                 color="secondary"
                 clearable
+                value={formik.values.openFileDate}
               />
               <DateField
                 name="transferDate"
                 label="תאריך העברה לשליח"
-                onChange={(e)=>{formik.handleChange(e)}}
+                onChange={(val)=>{formik.setFieldValue('transferDate', val)}}
                 size="small"
                 color="secondary"
                 clearable
+                value={formik.values.transferDate}
               />
             </StyledStack>
           </Box>
-        </form>
-    </FormikProvider>
-  );
+);
 };

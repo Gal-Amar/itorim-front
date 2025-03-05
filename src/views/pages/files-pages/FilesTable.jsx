@@ -18,6 +18,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 //project imports
 import  FileTicket  from './file-ticket-form/FileTicket';
+import Box from '@mui/material/Box';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   whiteSpace: 'nowrap',
@@ -157,9 +158,18 @@ export default function FilesTable() {
 
                 </StyledTableRow>
                 <TableRow >
-                  <TableCell sx={{ padding: 0, paddingTop: 0 }} colSpan={15}>
+                  <TableCell sx={{ padding: 0, paddingTop: 0}} colSpan={9}>
                       <Collapse in={open} timeout="auto" unmountOnExit >
-                        <FileTicket />
+                        {/*<Box*/}
+                        {/*  sx={{*/}
+                        {/*    width: { xs: '100vw', md: '100%' }, // Full screen width on small devices*/}
+                        {/*    margin: { xs: 0, md: 'auto' }, // Remove margin on small screens*/}
+                        {/*    padding: { xs: 2, md: 0 }, // Add padding on small screens for better UI*/}
+                        {/*    borderRadius: { xs: 0, md: '10px' } // Optional: Remove border radius on small screens*/}
+                        {/*  }}*/}
+                        {/*>*/}
+                         <FileTicket />
+                        {/*</Box>*/}
                       </Collapse>
                    </TableCell>
                 </TableRow>
