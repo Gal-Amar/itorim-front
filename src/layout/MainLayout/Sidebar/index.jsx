@@ -40,7 +40,7 @@ function Sidebar() {
   const drawer = useMemo(() => {
     const drawerContent = (
       <>
-        <MenuCard />
+        {/*<MenuCard />*/}
         <Stack direction="row" sx={{ justifyContent: 'center', mb: 2 }}>
           <Chip label={import.meta.env.VITE_APP_VERSION} size="small" color="default" />
         </Stack>
@@ -53,7 +53,8 @@ function Sidebar() {
       drawerSX = {
         paddingLeft: '20px',
         paddingRight: '16px',
-        marginTop: '0px'
+        marginTop: '0px',
+
       };
     }
 
@@ -62,34 +63,33 @@ function Sidebar() {
         {downMD ? (
           <Box sx={drawerSX}>
             <MenuList />
-            {drawerOpen && drawerContent}
           </Box>
         ) : (
           <PerfectScrollbar style={{ height: 'calc(100vh - 88px)', ...drawerSX }}>
             <MenuList />
-            {drawerOpen && drawerContent}
           </PerfectScrollbar>
         )}
       </>
     );
-  }, [downMD, drawerOpen]);
+  }, [downMD, drawerOpen, mode]);
 
   return (
-    <Box component="nav" sx={{ flexShrink: { md: 0 }, width: { xs: 'auto',  md: drawerWidth } }} aria-label="mailbox folders">
+    <Box component="nav" sx={{ flexShrink: { sm: 0 }, width: { xs: 'auto'} }} aria-label="mailbox folders">
       {downMD || (miniDrawer && drawerOpen) ? (
+
         <Drawer
           variant={downMD ? 'temporary' : 'persistent'}
-          anchor="left"
           open={drawerOpen}
           onClose={() => handlerDrawerOpen(!drawerOpen)}
           sx={{
             '& .MuiDrawer-paper': {
               mt: downMD ? 0 : 11,
+              right: 0,
               zIndex: 1099,
               width: drawerWidth,
               bgcolor: 'background.default',
               color: 'text.primary',
-              borderRight: 'none'
+              borderRight: 'none',
             }
           }}
           ModalProps={{ keepMounted: true }}
@@ -98,6 +98,7 @@ function Sidebar() {
           {downMD && logo}
           {drawer}
         </Drawer>
+
       ) : (
         <MiniDrawerStyled variant="permanent" open={drawerOpen}>
           {logo}
