@@ -1,5 +1,4 @@
 import { useState, Fragment } from 'react';
-
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -11,14 +10,12 @@ import TableRow ,{ tableRowClasses }from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-
 //assets
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
 //project imports
 import  FileTicket  from './file-ticket-form/FileTicket';
-import Box from '@mui/material/Box';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   whiteSpace: 'nowrap',

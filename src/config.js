@@ -2,7 +2,7 @@ export const DASHBOARD_PATH = '/sample-page';
 
 const config = {
   fontFamily: `'Rubik', sans-serif`,
-  borderRadius: 8,
+  borderRadius: '15px',
   rtlLayout: true
 };
 

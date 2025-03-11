@@ -5,13 +5,11 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { FileDetails } from './FileDetails';
 import { styled, useTheme } from '@mui/material/styles';
-import { MoreDetails } from './MoreDetails';
-import Grid from '@mui/material/Grid2';
-import { gridSpacing } from '../../../../store/constant';
+
 
 const StyledTab = styled(Tab) (({ theme }) => ({
   '&.Mui-selected': {
-    color: theme.palette.secondary[800],
+    color: theme.palette.secondary.main,
     borderRadius: "12px 12px 0 0",
 
   },
@@ -23,7 +21,7 @@ const StyledTab = styled(Tab) (({ theme }) => ({
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   '.MuiTabs-indicator': {
-    backgroundColor: theme.palette.secondary[800],
+    backgroundColor: theme.palette.secondary.main,
   }
 }));
 
@@ -34,18 +32,7 @@ const StyledFileBox = styled(Box)(({ theme }) => ({
   maxWidth: '80vw',
   backgroundColor: theme.palette.secondary.light,
   borderRadius: '20px',
-  // [theme.breakpoints.down('sm')]: {
-  //   // width: '20%',
-  //   maxWidth: '100vw',
-  //   padding: '8px',
-  //   borderRadius: '10px',
-  // },
-  // [theme.breakpoints.down('md')]: {
-  //   // width: '40%',
-  //   maxWidth: '85vw',
-  //   padding: '8px',
-  //   borderRadius: '10px',
-  // },
+
 }));
 
 
@@ -82,7 +69,7 @@ export default function FileTicket() {
   return (
     <StyledFileBox>
       <Box sx={{ paddingBottom: '20px'  }}>
-        <StyledTabs value={tab}  onChange={handleChange} sx={{ borderBottom: 2, borderColor: theme.palette.grey[300] }}>
+        <StyledTabs value={tab}  onChange={handleChange} sx={{ borderBottom: 1, borderColor: theme.palette.grey[400] }}>
           <StyledTab label="פרטי התיק"  value={0}/>
           <StyledTab label="פעולות בתיק"  value={1}/>
           <StyledTab label="תזכורות" value={2}/>

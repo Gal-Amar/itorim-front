@@ -124,6 +124,13 @@ export default function componentStyleOverrides(theme, borderRadius, outlinedFil
         }
       }
     },
+    MuiTextField: {
+      styleOverrides: {
+        input: {
+          borderRadius: '5px',
+        }
+      }
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {

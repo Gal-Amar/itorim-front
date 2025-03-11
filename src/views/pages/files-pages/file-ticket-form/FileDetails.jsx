@@ -1,24 +1,30 @@
 import Grid from '@mui/material/Grid2';
-import { styled } from '@mui/material/styles';
-
-import { DebtorDetails } from './DebtorDetails';
-import { MoreDetails } from './MoreDetails';
+import { styled, useTheme } from '@mui/material/styles';
+import { FileFields } from './FileFields';
 import Box from '@mui/material/Box';
-import { FileCond } from './FileCond';
 import { FormikProvider, useFormik } from 'formik';
 import dayjs from 'dayjs';
 import * as Yup from 'yup';
-
-
+import Button from '@mui/material/Button';
+import { Divider } from '@mui/material';
+import { fileFormKeys } from './contants';
+import { HistoryTable } from './HistoryTable';
+import Stack from '@mui/material/Stack';
 
 const StyledGrid = styled(Grid) (({ theme }) => ({
-
   height: 'max-content',
+}))
+const StyledCardBox = styled(Box) (({ theme }) => ({
+  flexGrow: 1 ,
+  border: `1px solid ${theme.palette.grey[400]}`,
+  borderRadius: '10px',
+  padding: '10px'
 }))
 
 
 
 export const FileDetails = () => {
+  const theme = useTheme();
   const getValidationSchema = () => {
     return Yup.object({
       lawyerFileNumber: Yup.number()
@@ -83,36 +89,26 @@ export const FileDetails = () => {
     return (
       <FormikProvider value={formik}>
         <form onSubmit={formik.handleSubmit}>
-          <Box sx={{ flexGrow: 1 }}>
+          <StyledCardBox>
+            <Stack direction="column" spacing={2}>
             <StyledGrid container spacing={2}>
-              <Grid size={{ xs:12, sm: 12, md: 4 }} >
-                <DebtorDetails formik={formik}/>
-              </Grid>
-              <Grid size={{ xs:12, sm: 12, md: 4 }} >
-                <MoreDetails formik={formik}/>
-              </Grid>
-              <Grid size={{ xs:12, sm: 6, md: 4 }} >
-                <FileCond formik={formik}/>
-              </Grid>
+              {Object.values(fileFormKeys).map((key, index) => (
+                <Grid key={index} size={{ xs:12, sm: 12, md: 4 }}>
+                  <FileFields detailsType={key} />
+                </Grid>
+              ))}
             </StyledGrid>
-            {/*<StyledGrid container spacing={2} alignItems="stretch">*/}
-            {/*  <Grid item xs={12} sm={12} md={4} sx={{ height: '100%' }}>*/}
-            {/*    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>*/}
-            {/*      <DebtorDetails formik={formik} />*/}
-            {/*    </Box>*/}
-            {/*  </Grid>*/}
-            {/*  <Grid item xs={12} sm={12} md={4} sx={{ height: '100%' }}>*/}
-            {/*    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>*/}
-            {/*      <MoreDetails formik={formik} />*/}
-            {/*    </Box>*/}
-            {/*  </Grid>*/}
-            {/*  <Grid item xs={12} sm={6} md={4} sx={{ height: '100%' }}>*/}
-            {/*    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>*/}
-            {/*      <FileCond formik={formik} />*/}
-            {/*    </Box>*/}
-            {/*  </Grid>*/}
-            {/*</StyledGrid>*/}
-          </Box>
+
+            <Box sx={{display: 'flex', gap: '5px', marginTop: '10px'}}>
+              <Button type={'submit'} variant="contained" color={'secondary'}>שמירת שינויים בתיק</Button>
+              <Button  variant="contained" color={'secondary'}>סגירת התיק</Button>
+              <Button  variant="contained" color={'secondary'}>מחיקת התיק</Button>
+            </Box >
+              <Divider sx={{height: '4px', color:'red'}} />
+            <HistoryTable />
+          </Stack>
+          </StyledCardBox>
+
         </form>
       </FormikProvider>
     )
